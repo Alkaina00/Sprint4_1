@@ -45,7 +45,7 @@ public class OrderTest extends BaseTest{
     }
 
     @Parameterized.Parameters
-    public static Object[][] getCredentials(){
+    public static Object[][] getOrderDetails(){
         return new Object[][]{
                 {"Header", "Иван", "Иванов", "г. Москва, ул. Ивановская, д.1", "Арбатская", "background-color: rgb(77, 198, 244);",
                         "79049678723", "01.01.2025", "сутки", "black", "Перед доставкой позвонить за 15 минут"},
