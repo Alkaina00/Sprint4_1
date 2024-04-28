@@ -13,9 +13,7 @@ import ru.yandex.praktikum.page.OrderRentPage;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class OrderTest {
-    private WebDriver webDriver;
-
+public class OrderTest extends BaseTest{
     private String buttonLocation;
     private String nameUser;
     private String lastNameUser;
@@ -56,12 +54,6 @@ public class OrderTest {
         };
     }
 
-    @Before
-    public void setUp() {
-        webDriver = WebDriverFactory.getWebDriver(System.getProperty("browser", "chrome"));
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
-    }
-
     @Test
     public void orderCreate() {
 
@@ -82,10 +74,4 @@ public class OrderTest {
         //появилось окно Заказ оформлен? да - успех, нет - провал
         assertTrue(orderRentPage.orderDoneDesplayed());
     }
-
-    @After
-    public void teardown() {
-        // Закрой браузер
-        webDriver.close();
-    };
 }

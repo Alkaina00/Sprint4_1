@@ -11,8 +11,7 @@ import ru.yandex.praktikum.page.MainPage;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class AccordionTest{
-    private WebDriver webDriver;
+public class AccordionTest extends BaseTest{
     private String answer;
     private int index;
 
@@ -35,12 +34,6 @@ public class AccordionTest{
         };
     }
 
-    @Before
-    public void setUp() {
-        webDriver = WebDriverFactory.getWebDriver(System.getProperty("browser", "chrome"));
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
-    }
-
     @Test
     public void accordionTest() {
         MainPage mainPage = new MainPage(webDriver);
@@ -51,10 +44,4 @@ public class AccordionTest{
         String elementTextAnswer = mainPage.clickImportantQuestion(index);
         assertEquals("Текст ответа выпадающего списка не совпадает!", answer, elementTextAnswer);
     }
-
-    @After
-    public void teardown() {
-        // Закрой браузер
-        webDriver.close();
-    };
 }

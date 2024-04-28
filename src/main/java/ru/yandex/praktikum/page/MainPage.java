@@ -12,7 +12,7 @@ import static java.time.Duration.ofSeconds;
 public class MainPage {
     private final WebDriver driver;
     //Кнопка Заказать
-    private final String buttonOrder1 = ".//div[contains(@class, '%s')]/button[text()='Заказать']";
+    private final String buttonOrderLocator = ".//div[contains(@class, '%s')]/button[text()='Заказать']";
 
     //Кнопка закрыть сообщение о куки
     private final By buttonCloseCookiesLocator = By.id("rcc-confirm-button");
@@ -29,7 +29,7 @@ public class MainPage {
     }
 
     public void clickOrderButton(String button){
-        WebElement buttonOrder = driver.findElement(By.xpath(String.format(buttonOrder1, button)));
+        WebElement buttonOrder = driver.findElement(By.xpath(String.format(buttonOrderLocator, button)));
         //Проскролить страницу до кнопки Заказать
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", buttonOrder);
         new WebDriverWait(driver, ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(buttonOrder));
